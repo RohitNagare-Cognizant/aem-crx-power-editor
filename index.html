@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="panel.css">
+
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+    <script src="mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="panel.js"></script>
+</head>
+
+<body>
+    <form id="mainfrom">
+        <fieldset>
+            <legend>CRX - VS Editor</legend>
+            <div class="input-group input-group-sm status-area">
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    <label id="statusWrap" class="btn btn-success active">
+                        <input type="checkbox" autocomplete="off" id="chkStatus" name="chkStatus" checked="">
+                        <span id="lbStatus">Enable</span>
+                    </label>
+                </div>
+            </div>
+            <div class="detail-title">Add Url:</div>
+            <div class="url-input-area">
+                <div class="input-group input-group-sm">
+                    <input id="txtUrl" type="text" class="form-control" placeholder="Add Url...">
+                    <span class="input-group-append">
+                        <button id="btnAdd" class="btn btn-primary" type="button">Add</button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="list-url mCustomScrollbar _mCS_1 mCS_no_scrollbar"
+                style="position: relative; overflow: visible;">
+                <div id="mCSB_1" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_outside" style="max-height: none;"
+                    tabindex="0">
+                    <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
+                        style="position:relative; top:0; left:0;" dir="ltr"></div>
+                </div>
+                <div id="mCSB_1_scrollbar_vertical"
+                    class="mCSB_scrollTools mCSB_1_scrollbar mCS-dark mCSB_scrollTools_vertical" style="display: none;">
+                    <div class="mCSB_draggerContainer">
+                        <div id="mCSB_1_dragger_vertical" class="mCSB_dragger"
+                            style="position: absolute; min-height: 30px; top: 0px;">
+                            <div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+                        </div>
+                        <div class="mCSB_draggerRail"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="float-right">
+                <button id="btnCancel" type="button" class="btn btn-secondary btn-sm pull-right">Cancel</button>
+                <button id="btnSave" type="button" class="btn btn-success btn-sm pull-right">Save</button>
+            </div>
+        </fieldset>
+    </form>
+
+
+</body>
+
+</html>
