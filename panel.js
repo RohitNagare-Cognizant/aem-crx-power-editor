@@ -1,6 +1,6 @@
 var isChrome = !browser;
 var browser = browser || chrome;
-var config = config || { urls: ['http://localhost:4502'], isEnable: true };
+var config = config || { urls: ['http://localhost:4502'], isEnable: true, editorType: "editorType-vs" };
 
 $(function () {
 	$('#chkStatus').on("change", function () {
@@ -22,6 +22,7 @@ $(function () {
 	$('#btnSave').on("click", function () {
 		var isCheck = $('#chkStatus').is(":checked");
 		config.isEnable = isCheck;
+		config.editorType = $('.editor-toggle.active input').attr("id");
 		var urls = [];
 		$('.url-regex').each(function (index) {
 			urls.push($(this).text());
@@ -93,6 +94,10 @@ function initPopup(config) {
 		var url = urls[i];
 		addUrlSection('index', url);
 	};
+	$('.settings').hide();
+	$('.editor-toggle').removeClass("active");
+	$('.settings-' + config.editorType).show();
+	$('#' + config.editorType).parent().addClass("active");
 }
 
 function onError(error) {
@@ -126,5 +131,9 @@ $(window).on('load', function () {
 	$(".list-url").mCustomScrollbar({
 		theme: "dark",
 		scrollbarPosition: "outside"
+	});
+	$(".editor-toggle").click(function () {
+		$(".settings").hide();
+		$(".settings-" + $(this).find("input").attr("id")).show();
 	});
 });

@@ -94,3 +94,19 @@ button{
 .tab-content {
 	padding-top: 20px;
 }
+
+.btn-group-toggle .btn-primary {
+	background-color: var(--red);
+    border-color: var(--red);
+	opacity: 0.35;
+}
+
+.btn-group-toggle .btn-primary.active{
+	background-color: var(--green) !important;
+    border-color: var(--green) !important;
+	opacity: 1;
+}
+
+#advanced {
+	height: 400px;
+}

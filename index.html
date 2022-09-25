@@ -46,16 +46,17 @@
                             </span>
                         </div>
                     </div>
-        
+
                     <div class="list-url mCustomScrollbar _mCS_1 mCS_no_scrollbar"
                         style="position: relative; overflow: visible;">
-                        <div id="mCSB_1" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_outside" style="max-height: none;"
-                            tabindex="0">
+                        <div id="mCSB_1" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_outside"
+                            style="max-height: none;" tabindex="0">
                             <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
                                 style="position:relative; top:0; left:0;" dir="ltr"></div>
                         </div>
                         <div id="mCSB_1_scrollbar_vertical"
-                            class="mCSB_scrollTools mCSB_1_scrollbar mCS-dark mCSB_scrollTools_vertical" style="display: none;">
+                            class="mCSB_scrollTools mCSB_1_scrollbar mCS-dark mCSB_scrollTools_vertical"
+                            style="display: none;">
                             <div class="mCSB_draggerContainer">
                                 <div id="mCSB_1_dragger_vertical" class="mCSB_dragger"
                                     style="position: absolute; min-height: 30px; top: 0px;">
@@ -65,15 +66,42 @@
                             </div>
                         </div>
                     </div>
-        
-                    <div class="float-right">
-                        <button id="btnCancel" type="button" class="btn btn-secondary btn-sm pull-right">Cancel</button>
-                        <button id="btnSave" type="button" class="btn btn-success btn-sm pull-right">Save</button>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="advanced">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn editor-toggle btn-primary active">
+                            <input type="radio" name="options" id="editorType-vs" autocomplete="off" checked> Visual
+                            Studio
+                        </label>
+                        <label class="btn editor-toggle btn-primary">
+                            <input type="radio" name="options" id="editorType-codeMirror" autocomplete="off"> Code
+                            Mirror
+                        </label>
+                    </div>
+
+                    <div class="settings settings-editorType-vs">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-mdb-toggle="dropdown" aria-expanded="false">
+                                Dropdown button
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="settings settings-editorType-codeMirror">
+                        
                     </div>
                 </div>
-                <div role="tabpanel" class="tab-pane fade" id="advanced">advanced</div>
+                <div class="float-right">
+                    <button id="btnCancel" type="button" class="btn btn-secondary btn-sm pull-right">Cancel</button>
+                    <button id="btnSave" type="button" class="btn btn-success btn-sm pull-right">Save</button>
+                </div>
             </div>
-            
+
         </fieldset>
     </form>
 
