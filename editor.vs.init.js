@@ -15,6 +15,7 @@ function initEditor(id, codeMirror, extension) {
     });
 }
 function executeHook() {
+    console.log("Exe hook");
     const editors = document.getElementById("editors");
     if (editors != null && editors.getAttribute("editor-progress") === null) {
         const loader = document.createElement("div");
@@ -28,14 +29,11 @@ function executeHook() {
     document.querySelectorAll('.x-tab-strip-closable').forEach(tab => {
         if (tab.id) {
             const editorInitiazed = tab.getAttribute("editor-initialzed");
-            //console.log(editorInitiazed);
             if (editorInitiazed === null) {
                 document.querySelector('.loading.editor').style.display = 'block';
                 const id = tab.id.replace("editors__", "");
                 const editorElement = document.getElementById(id);
                 const editorHeight = document.getElementById("editors").clientHeight;
-                //editorElement.childNodes[0].style.display = 'none';
-                //console.log(editorHeight);
                 const codeMirror = editorElement.querySelector(".CodeMirror").CodeMirror;
                 const container = document.createElement("div");
                 container.setAttribute("class", "monaco-container");
@@ -49,10 +47,8 @@ function executeHook() {
                     panelWrap.childNodes[2].style.display = 'none';
                 }
                 strip.setAttribute("editor-strip", "");
-                //panelWrap.childNodes[0].appendChild(container);
                 strip.parentNode.insertBefore(container, strip.nextSibling);
                 const extension = id.split(".")[id.split(".").length - 1];
-                //console.log("|" + codeMirror.getValue() + "|" + codeMirror.getValue() != "");
                 if (codeMirror.getValue() != "") {
                     if (typeof monaco !== 'undefined') {
                         initEditor(container.id, codeMirror, extension);
@@ -71,8 +67,17 @@ function executeHook() {
                 tab.setAttribute("editor-initialzed", "true");
                 document.querySelector('.loading.editor').style.display = 'none';
             }
+            handleResize(tab.id.replace("editors__", "") + "_container");
         }
     });
+}
+function handleResize(containerId) {
+    const codeMirrorContainer = document.getElementById(containerId);
+    const parentHeight = codeMirrorContainer.closest(".x-tab-panel-body").clientHeight;
+    if(parentHeight - 25 !== codeMirrorContainer.clientHeight) {
+        codeMirrorContainer.style.height = (codeMirrorContainer.closest(".x-tab-panel-body").clientHeight - 25) + "px";
+        console.log("adjusted");
+    }
 }
 
 function getName(extension) {
@@ -83,7 +88,6 @@ function getName(extension) {
 }
 function waitLoader() {
     const loader = document.getElementById("load-indicator");
-    //console.log(loader);
     if (loader === null) {
         clearInterval(loaderInterval);
         setInterval(function () {

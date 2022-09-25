@@ -150,3 +150,12 @@
 div[editor-strip] td.x-toolbar-cell:nth-child(2) {
     display: none;
 }
+
+/* Code Mirror Style Overrides*/
+.cm-editor {
+    height: 100%
+}
+
+.cm-scroller {
+    overflow: auto
+}

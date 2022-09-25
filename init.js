@@ -1,16 +1,15 @@
 var isChrome = !browser;
 var browser = browser || chrome;
-if (window.location.href.indexOf("crx/de") === -1) {
-    console.log("Power CRX Editor - Not on CRX DE");
-}
 execute();
 
 function execute() {
-    let isEnable = false;
+    if (window.location.href.indexOf("crx/de") === -1) {
+        console.log("CRX Power Editor - Not on CRX DE");
+        return;
+    }
     browser.storage.local.get('config', (results) => {
         if (results.config) {
-            isEnable = results.config.isEnable;
-            if (!isEnable) {
+            if (!results.config.isEnable) {
                 console.log("Power Editor is not enabled...");
                 return;
             }
@@ -22,17 +21,21 @@ function execute() {
                 console.log("Site is excluded => " + window.location.origin);
                 return;
             }
-            console.log("Initializing power editor...");
+            console.log("Initializing Power editor...");
 
             createElement();
             var require = { paths: { vs: 'monaco-editor' } };
-            createEditorCssLink();
             createScript(chrome.runtime.getURL("jquery-3.4.1.min.js"));
-            createScript(chrome.runtime.getURL("vs/loader.js"));
-            createScript(chrome.runtime.getURL("vs/editor/editor.main.nls.js"));
-            createScript(chrome.runtime.getURL("vs/editor/editor.main.js"));
+            if(false){
+                createEditorCssLink();
+                createScript(chrome.runtime.getURL("vs/loader.js"));
+                createScript(chrome.runtime.getURL("vs/editor/editor.main.nls.js"));
+                createScript(chrome.runtime.getURL("vs/editor/editor.main.js"));
+                createScript(chrome.runtime.getURL("editor.vs.init.js"));
+            } else {
+                createScript(chrome.runtime.getURL("editor.codemirror.init.js"));
+            }
             console.log("Power Editor initialized.");
-            createScript(chrome.runtime.getURL("editor.init.js"));
 
         }
     });
