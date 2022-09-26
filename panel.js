@@ -42,6 +42,10 @@ $(function () {
 	$('#btnCancel').on("click", function () {
 		initPopup(config);
 	});
+
+	$('#btnClose').on("click", function () {
+		window.close();
+	});
 });
 
 function setLabelStatus(isEnable) {
