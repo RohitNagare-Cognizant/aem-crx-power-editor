@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="panel.css">
 
     <script src="jquery-3.4.1.min.js"></script>
-    <script src="bootstrap/bootstrap.min.js"></script>
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
     <script src="mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="panel.js"></script>
 </head>
@@ -22,7 +22,7 @@
                     <a class="nav-link active" href="#basic" role="tab" data-toggle="tab">Basic</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#advanced" role="tab" data-toggle="tab">Advanced</a>
+                    <a class="nav-link" href="#advanced" role="tab" data-toggle="tab">Editor</a>
                 </li>
             </ul>
 
@@ -80,21 +80,86 @@
                     </div>
 
                     <div class="settings settings-editorType-vs">
-                        <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-mdb-toggle="dropdown" aria-expanded="false">
-                                Dropdown button
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </div>
+                        <label for="editorType-vs-theme" class="form-label">Theme:</label>
+                        <select class="form-select theme-picker" id="editorType-vs-theme" name="editorType-theme">
+                            <option value="vs">Visual Studio</option>
+                            <option value="vs-dark">Visual Studio Dark</option>
+                            <option value="hc-black">High Contrast Dark</option>
+                        </select>
                     </div>
                     <div class="settings settings-editorType-codeMirror">
-                        
+                        <label for="editorType-codeMirror-theme" class="form-label">Theme:</label>
+                        <select class="form-select theme-picker" id="editorType-codeMirror-theme"
+                            name="editorType-theme">
+                            <option selected="" value="default">default</option>
+                            <option value="3024-day">3024-day</option>
+                            <option value="3024-night">3024-night</option>
+                            <option value="abbott">abbott</option>
+                            <option value="abcdef">abcdef</option>
+                            <option value="ambiance">ambiance</option>
+                            <option value="ayu-dark">ayu-dark</option>
+                            <option value="ayu-mirage">ayu-mirage</option>
+                            <option value="base16-dark">base16-dark</option>
+                            <option value="base16-light">base16-light</option>
+                            <option value="bespin">bespin</option>
+                            <option value="blackboard">blackboard</option>
+                            <option value="cobalt">cobalt</option>
+                            <option value="colorforth">colorforth</option>
+                            <option value="darcula">darcula</option>
+                            <option value="dracula">dracula</option>
+                            <option value="duotone-dark">duotone-dark</option>
+                            <option value="duotone-light">duotone-light</option>
+                            <option value="eclipse">eclipse</option>
+                            <option value="elegant">elegant</option>
+                            <option value="erlang-dark">erlang-dark</option>
+                            <option value="gruvbox-dark">gruvbox-dark</option>
+                            <option value="hopscotch">hopscotch</option>
+                            <option value="icecoder">icecoder</option>
+                            <option value="idea">idea</option>
+                            <option value="isotope">isotope</option>
+                            <option value="juejin">juejin</option>
+                            <option value="lesser-dark">lesser-dark</option>
+                            <option value="liquibyte">liquibyte</option>
+                            <option value="lucario">lucario</option>
+                            <option value="material">material</option>
+                            <option value="material-darker">material-darker</option>
+                            <option value="material-palenight">material-palenight</option>
+                            <option value="material-ocean">material-ocean</option>
+                            <option value="mbo">mbo</option>
+                            <option value="mdn-like">mdn-like</option>
+                            <option value="midnight">midnight</option>
+                            <option value="monokai">monokai</option>
+                            <option value="moxer">moxer</option>
+                            <option value="neat">neat</option>
+                            <option value="neo">neo</option>
+                            <option value="night">night</option>
+                            <option value="nord">nord</option>
+                            <option value="oceanic-next">oceanic-next</option>
+                            <option value="panda-syntax">panda-syntax</option>
+                            <option value="paraiso-dark">paraiso-dark</option>
+                            <option value="paraiso-light">paraiso-light</option>
+                            <option value="pastel-on-dark">pastel-on-dark</option>
+                            <option value="railscasts">railscasts</option>
+                            <option value="rubyblue">rubyblue</option>
+                            <option value="seti">seti</option>
+                            <option value="shadowfox">shadowfox</option>
+                            <option value="solarized dark">solarized dark</option>
+                            <option value="solarized light">solarized light</option>
+                            <option value="the-matrix">the-matrix</option>
+                            <option value="tomorrow-night-bright">tomorrow-night-bright</option>
+                            <option value="tomorrow-night-eighties">tomorrow-night-eighties</option>
+                            <option value="ttcn">ttcn</option>
+                            <option value="twilight">twilight</option>
+                            <option value="vibrant-ink">vibrant-ink</option>
+                            <option value="xq-dark">xq-dark</option>
+                            <option value="xq-light">xq-light</option>
+                            <option value="yeti">yeti</option>
+                            <option value="yonce">yonce</option>
+                            <option value="zenburn">zenburn</option>
+                        </select>
                     </div>
+                    <label class="editorHook" for="editorHook">Editor Hook(millis):</label>
+                    <input type="number" id="editorHook" name="editorHook" min="500" max="10000">
                 </div>
                 <div class="float-right">
                     <button id="btnCancel" type="button" class="btn btn-secondary btn-sm pull-right">Cancel</button>

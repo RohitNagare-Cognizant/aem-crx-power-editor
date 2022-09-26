@@ -74,7 +74,7 @@ function executeHook() {
 function handleResize(containerId) {
     const codeMirrorContainer = document.getElementById(containerId);
     const parentHeight = codeMirrorContainer.closest(".x-tab-panel-body").clientHeight;
-    if(parentHeight - 25 !== codeMirrorContainer.clientHeight) {
+    if (parentHeight - 25 !== codeMirrorContainer.clientHeight) {
         codeMirrorContainer.style.height = (codeMirrorContainer.closest(".x-tab-panel-body").clientHeight - 25) + "px";
         console.log("adjusted");
     }
@@ -87,12 +87,14 @@ function getName(extension) {
     return extension;
 }
 function waitLoader() {
+    let editorHookInterval = document.getElementById("editorHookInterval");
+    const interval = editorHookInterval?.value || 750;
     const loader = document.getElementById("load-indicator");
     if (loader === null) {
         clearInterval(loaderInterval);
         setInterval(function () {
             executeHook();
-        }, 750);
+        }, interval);
     }
 }
 var loaderInterval = setInterval(waitLoader, 2000);

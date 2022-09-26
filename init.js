@@ -26,15 +26,18 @@ function execute() {
             createElement();
             var require = { paths: { vs: 'monaco-editor' } };
             createScript(chrome.runtime.getURL("jquery-3.4.1.min.js"));
-            if(false){
+            if(results.config?.editorType == "editorType-codeMirror"){
+                createScript(chrome.runtime.getURL("editor.codemirror.init.js"));
+            } else {
                 createEditorCssLink();
                 createScript(chrome.runtime.getURL("vs/loader.js"));
                 createScript(chrome.runtime.getURL("vs/editor/editor.main.nls.js"));
                 createScript(chrome.runtime.getURL("vs/editor/editor.main.js"));
                 createScript(chrome.runtime.getURL("editor.vs.init.js"));
-            } else {
-                createScript(chrome.runtime.getURL("editor.codemirror.init.js"));
             }
+            createElementEditorHookInterval(results.config.editorHook);
+            createElementEditorTheme(results.config.editorTheme);
+
             console.log("Power Editor initialized.");
 
         }
@@ -54,6 +57,20 @@ function createElement() {
     input.setAttribute('type', 'hidden');
     input.setAttribute('id', 'plugin-prefix');
     input.setAttribute('value', 'chrome-extension://' + chrome.runtime.id + "/");
+    document.body.appendChild(input);
+}
+function createElementEditorHookInterval(interval) {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('id', 'editorHookInterval');
+    input.setAttribute('value', interval);
+    document.body.appendChild(input);
+}
+function createElementEditorTheme(theme) {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('id', 'editorTheme');
+    input.setAttribute('value', theme);
     document.body.appendChild(input);
 }
 function createEditorCssLink() {

@@ -27824,12 +27824,14 @@
         return extension;
     }
     function waitLoader() {
+        let editorHookInterval = document.getElementById("editorHookInterval");
+        const interval = editorHookInterval?.value || 750;
         const loader = document.getElementById("load-indicator");
         if (loader === null) {
             clearInterval(loaderInterval);
             setInterval(function () {
                 executeHook();
-            }, 750);
+            }, interval);
         }
     }
     var loaderInterval = setInterval(waitLoader, 2000);

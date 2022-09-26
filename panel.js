@@ -1,6 +1,6 @@
 var isChrome = !browser;
 var browser = browser || chrome;
-var config = config || { urls: ['http://localhost:4502'], isEnable: true, editorType: "editorType-vs" };
+var config = config || { urls: ['http://localhost:4502'], isEnable: true, editorType: "editorType-vs", editorTheme: 'vs', editorHook: 750 };
 
 $(function () {
 	$('#chkStatus').on("change", function () {
@@ -23,10 +23,16 @@ $(function () {
 		var isCheck = $('#chkStatus').is(":checked");
 		config.isEnable = isCheck;
 		config.editorType = $('.editor-toggle.active input').attr("id");
+		config.editorHook = $('#editorHook').val();
 		var urls = [];
 		$('.url-regex').each(function (index) {
 			urls.push($(this).text());
 		});
+		if (config.editorType === "editorType-vs") {
+			config.editorTheme = $("#editorType-vs-theme").val()
+		} else {
+			config.editorTheme = $("#editorType-codeMirror-theme").val()
+		}
 		console.log(urls);
 		config.urls = urls;
 		browser.storage.local.set({ config: config });
@@ -94,6 +100,14 @@ function initPopup(config) {
 		var url = urls[i];
 		addUrlSection('index', url);
 	};
+	if (config.editorTheme) {
+		if (config.editorType === "editorType-vs") {
+			$("#editorType-vs-theme").val(config.editorTheme);
+		} else {
+			$("#editorType-codeMirror-theme").val(config.editorTheme);
+		}
+	}
+	$('#editorHook').val(config.editorHook);
 	$('.settings').hide();
 	$('.editor-toggle').removeClass("active");
 	$('.settings-' + config.editorType).show();
