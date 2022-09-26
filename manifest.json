@@ -1,12 +1,12 @@
 {
-    "name": "CRX - Power Editor",
+    "name": "AEM CRX - Power Editor",
     "version": "1.0.0",
     "description": "Replacement of CRX Editor to support better editing experience",
     "manifest_version": 3,
     "author": "Rohit Nagare",
     "action": {
         "default_popup": "index.html",
-        "default_title": "CRX - Power Editor"
+        "default_title": "AEM CRX - Power Editor"
     },
     "permissions": [
         "storage"
