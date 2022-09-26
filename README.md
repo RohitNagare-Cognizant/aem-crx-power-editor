@@ -1,1 +1,1 @@
-# crx-vs-editor
+# crx-power-editor
