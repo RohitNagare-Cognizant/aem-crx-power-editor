@@ -3,9 +3,9 @@ var browser = browser || chrome;
 var config = config || { urls: ['http://localhost:4502'], isEnable: false, editorType: "editorType-vs", editorTheme: 'vs', editorHook: 750 };
 
 $(function () {
-	$('#chkStatus').on("change", function () {
-		var isCheck = $(this).is(":checked");
-		setLabelStatus(isCheck);
+	$('#statusWrap').on("click", function () {
+		var isCheck = $(this).attr("class").indexOf("danger") === -1;
+		setLabelStatus(!isCheck);
 	});
 
 	$('#txtUrl').on("keypress", function (e) {
@@ -20,7 +20,7 @@ $(function () {
 	});
 
 	$('#btnSave').on("click", function () {
-		var isCheck = $('#chkStatus').is(":checked");
+		var isCheck = $('#statusWrap').attr("class").indexOf("danger") === -1;
 		config.isEnable = isCheck;
 		config.editorType = $('.editor-toggle.active input').attr("id");
 		config.editorHook = $('#editorHook').val();
@@ -95,7 +95,6 @@ function isValidHttpUrl(string) {
 
 function initPopup(config) {
 	console.log('Init popup');
-	$('#chkStatus').prop('checked', config.isEnable);
 	setLabelStatus(config.isEnable);
 
 	$('.list-url .mCSB_container').html('');
