@@ -1,5 +1,8 @@
 function initEditor(id, codeMirror, extension) {
+    const editorThemeElement = document.getElementById("editorTheme");
+    const editorTheme = editorThemeElement !== null ? editorThemeElement.value : 'vs';
     const editor = monaco.editor.create(document.getElementById(id), {
+        theme: editorTheme,
         value: codeMirror.getValue(),
         language: getName(extension),
         automaticLayout: true,
@@ -15,7 +18,6 @@ function initEditor(id, codeMirror, extension) {
     });
 }
 function executeHook() {
-    console.log("Exe hook");
     const editors = document.getElementById("editors");
     if (editors != null && editors.getAttribute("editor-progress") === null) {
         const loader = document.createElement("div");
@@ -74,9 +76,13 @@ function executeHook() {
 function handleResize(containerId) {
     const codeMirrorContainer = document.getElementById(containerId);
     const parentHeight = codeMirrorContainer.closest(".x-tab-panel-body").clientHeight;
-    if (parentHeight - 25 !== codeMirrorContainer.clientHeight) {
+    let containerHeight = codeMirrorContainer.clientHeight;
+    if (containerHeight == 0) {
+        containerHeight = +codeMirrorContainer.style.height.replace("px", "");
+    }
+    if (parentHeight - 25 !== containerHeight) {
         codeMirrorContainer.style.height = (codeMirrorContainer.closest(".x-tab-panel-body").clientHeight - 25) + "px";
-        console.log("adjusted");
+        console.log("Height adjusted");
     }
 }
 
